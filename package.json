@@ -1,15 +1,15 @@
 {
   "name": "create-compiled-node-project",
-  "version": "1.0.0",
-  "main": "lib/cli.js",
+  "version": "1.0.1",
+  "main": "lib/index.js",
   "license": "MIT",
   "bin": {
-    "create-compiled-node-project": "lib/cli.js"
+    "create-compiled-node-project": "lib/index.js"
   },
   "scripts": {
     "build": "babel src --out-dir lib --copy-files",
     "prepublishOnly": "yarn run build",
-    "dev": "babel-node src/cli.js",
+    "dev": "babel-node src/index.js",
     "lint": "pretty-quick --check src/"
   },
   "devDependencies": {
