@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import path from 'path';
 import { promises as fs } from 'fs';
 import { argv } from 'yargs';
@@ -87,4 +89,6 @@ const run = async () => {
   console.log(chalk.green('Done!'));
 };
 
-export default run;
+run().catch((e) => {
+  throw new Error(e);
+});
