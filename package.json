@@ -1,0 +1,28 @@
+{
+  "name": "create-compiled-node-project",
+  "version": "1.0.0",
+  "main": "lib/cli.js",
+  "license": "MIT",
+  "bin": {
+    "create-compiled-node-project": "lib/cli.js"
+  },
+  "scripts": {
+    "build": "babel src --out-dir lib --copy-files",
+    "prepublishOnly": "yarn run build",
+    "dev": "babel-node src/cli.js",
+    "lint": "pretty-quick --check src/"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.10.1",
+    "@babel/core": "^7.10.1",
+    "@babel/node": "^7.10.1",
+    "@babel/preset-env": "^7.10.1",
+    "prettier": "^2.0.5",
+    "pretty-quick": "^2.0.1"
+  },
+  "dependencies": {
+    "await-exec": "^0.1.2",
+    "chalk": "^4.0.0",
+    "yargs": "^15.3.1"
+  }
+}
