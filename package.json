@@ -7,7 +7,7 @@
     "create-compiled-node-project": "lib/index.js"
   },
   "scripts": {
-    "build": "babel src --out-dir lib --copy-files",
+    "build": "babel src --out-dir lib --copy-files --include-dotfiles",
     "prepublishOnly": "yarn run build",
     "dev": "babel-node src/index.js",
     "lint": "pretty-quick --check src/"
