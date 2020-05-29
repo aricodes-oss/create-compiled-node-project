@@ -1,9 +1,12 @@
 {
   "name": "create-compiled-node-project",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "main": "lib/index.js",
   "license": "MIT",
-  "files": ['lib/*', 'lib/resources/.*'],
+  "files": [
+    "lib/*",
+    "lib/resources/.*"
+  ],
   "bin": {
     "create-compiled-node-project": "lib/index.js"
   },
