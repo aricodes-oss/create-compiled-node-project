@@ -80,7 +80,8 @@ const run = async () => {
     try {
       console.log(`Copying ${chalk.blue(f)}`);
       await fs.copyFile(path.join(RESOURCE_PATH, f), path.join('./', f));
-    } catch {
+    } catch (e) {
+      console.error(e);
       console.error(`Unable to copy ${chalk.red(f)}, exiting`);
       process.exit(1);
     }
