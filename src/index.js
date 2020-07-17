@@ -28,6 +28,7 @@ const PACKAGE_DATA = {
     dev: 'babel-node src/index.js',
     start: `${PACKAGE_MANAGER} run build && NODE_ENV=production node lib/index.js`,
     lint: 'eslint ./src/',
+    fix: 'eslint ./src/ --fix',
   },
   main: 'lib/index.js',
   files: ['lib/*']
