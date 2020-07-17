@@ -27,19 +27,33 @@ const PACKAGE_DATA = {
     prepublishOnly: `${PACKAGE_MANAGER} run build`,
     dev: 'babel-node src/index.js',
     start: `${PACKAGE_MANAGER} run build && NODE_ENV=production node lib/index.js`,
-    lint: 'pretty-quick --check src/',
+    lint: 'eslint ./src/',
   },
   main: 'lib/index.js',
+  files: ['lib/*']
 };
 
-const COPIED_FILES = ['.babelrc.json', '.editorconfig', '.gitignore', '.prettierrc'];
+const COPIED_FILES = ['.babelrc.json', '.editorconfig', '.gitignore', '.prettierrc', '.eslintrc.js'];
 const DEV_PACKAGES = [
+  // Babel
   '@babel/cli',
   '@babel/core',
   '@babel/node',
   '@babel/preset-env',
+
+  // Prettier
   'prettier',
   'pretty-quick',
+
+  // Eslint
+  'eslint',
+  'babel-eslint',
+  'babel-plugin-module-resolver',
+  'eslint-import-resolver-babel-module',
+  'eslint-plugin-import',
+  'eslint-plugin-prettier',
+  'eslint-config-airbnb-base',
+  'eslint-config-prettier',
 ];
 
 const run = async () => {
