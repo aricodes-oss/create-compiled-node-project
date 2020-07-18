@@ -31,10 +31,16 @@ const PACKAGE_DATA = {
     fix: 'eslint ./src/ --fix',
   },
   main: 'lib/index.js',
-  files: ['lib/*']
+  files: ['lib/*'],
 };
 
-const COPIED_FILES = ['.babelrc.json', '.editorconfig', '.gitignore', '.prettierrc', '.eslintrc.js'];
+const COPIED_FILES = [
+  '.babelrc.json',
+  '.editorconfig',
+  '.gitignore',
+  '.prettierrc',
+  '.eslintrc.js',
+];
 const DEV_PACKAGES = [
   // Babel
   '@babel/cli',
