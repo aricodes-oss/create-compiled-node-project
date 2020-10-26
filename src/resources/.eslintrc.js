@@ -5,6 +5,9 @@ module.exports = {
   rules: {
     // for loops should not be restricted
     'no-restricted-syntax': ['off'],
+
+    // this is a NodeJS app
+    'no-console': ['off'],
   },
   settings: {
     'import/resolver': {
