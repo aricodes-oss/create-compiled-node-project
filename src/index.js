@@ -26,7 +26,7 @@ const PACKAGE_DATA = {
     build: 'babel src --out-dir lib --copy-files',
     prepublishOnly: `${PACKAGE_MANAGER} run build`,
     dev: 'babel-node src/index.js',
-    start: `${PACKAGE_MANAGER} run build && NODE_ENV=production node lib/index.js`,
+    start: `NODE_ENV=production node lib/index.js`,
     lint: 'eslint ./src/',
     fix: 'eslint ./src/ --fix',
   },
