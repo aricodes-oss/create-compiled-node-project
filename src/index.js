@@ -54,7 +54,7 @@ const DEV_PACKAGES = [
 
   // Eslint
   'eslint',
-  'babel-eslint',
+  '@babel/eslint-parser',
   'babel-plugin-module-resolver',
   'eslint-import-resolver-babel-module',
   'eslint-plugin-import',
