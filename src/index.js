@@ -26,6 +26,7 @@ const PACKAGE_DATA = {
     build: 'babel src --out-dir lib --copy-files',
     prepublishOnly: `${PACKAGE_MANAGER} run build`,
     dev: 'babel-node src/index.js',
+    watch: `nodemon --exec 'yarn dev' -e '.js'`,
     start: `NODE_ENV=production node lib/index.js`,
     lint: 'eslint ./src/',
     fix: 'eslint ./src/ --fix',
@@ -61,6 +62,7 @@ const DEV_PACKAGES = [
   'eslint-plugin-prettier',
   'eslint-config-airbnb-base',
   'eslint-config-prettier',
+  'nodemon',
 ];
 
 const run = async () => {
