@@ -23,9 +23,10 @@ const INSTALL_CMD = useYarn ? 'yarn add --dev ' : 'npm install --save-dev ';
 const RESOURCE_PATH = path.join(__dirname, 'resources');
 const PACKAGE_DATA = {
   scripts: {
-    build: 'babel src --out-dir lib --copy-files',
+    build:
+      'swc --copy-files --include-dotfiles --source-root ./src --source-maps both -q src -d lib/',
     prepublishOnly: `${PACKAGE_MANAGER} run build`,
-    dev: 'babel-node src/index.js',
+    dev: '${PACKAGE_MANAGER} run build; node lib/index.js',
     watch: `nodemon --exec 'yarn dev' -e '.js'`,
     start: `NODE_ENV=production node lib/index.js`,
     lint: 'eslint ./src/',
@@ -35,19 +36,11 @@ const PACKAGE_DATA = {
   files: ['lib/*'],
 };
 
-const COPIED_FILES = [
-  '.babelrc.json',
-  '.editorconfig',
-  '.gitignore',
-  '.prettierrc',
-  '.eslintrc.js',
-];
+const COPIED_FILES = ['.editorconfig', '.gitignore', '.prettierrc', '.eslintrc.js', '.swcrc'];
 const DEV_PACKAGES = [
   // Babel
-  '@babel/cli',
-  '@babel/core',
-  '@babel/node',
-  '@babel/preset-env',
+  '@swc/cli',
+  '@swc/core',
 
   // Prettier
   'prettier',
@@ -55,9 +48,6 @@ const DEV_PACKAGES = [
 
   // Eslint
   'eslint',
-  '@babel/eslint-parser',
-  'babel-plugin-module-resolver',
-  'eslint-import-resolver-babel-module',
   'eslint-plugin-import',
   'eslint-plugin-prettier',
   'eslint-config-airbnb-base',
