@@ -1,6 +1,6 @@
 {
   "name": "create-compiled-node-project",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "main": "lib/index.js",
   "license": "MIT",
   "files": [
@@ -12,8 +12,9 @@
   },
   "scripts": {
     "build": "swc --copy-files --include-dotfiles --source-root ./src src -d lib/",
-    "prepublishOnly": "npm run build",
+    "prepublishOnly": "npm run build; npm run compile",
     "dev": "npm run build; node lib/index.js",
+    "compile": "npm run build; ncc build lib/index.js -o lib",
     "lint": "pretty-quick --check src/"
   },
   "devDependencies": {
@@ -23,6 +24,7 @@
     "@babel/preset-env": "^7.10.1",
     "@swc/cli": "^0.1.49",
     "@swc/core": "^1.2.84",
+    "@vercel/ncc": "^0.30.0",
     "babel-plugin-module-resolver": "^4.0.0",
     "prettier": "^2.0.5",
     "pretty-quick": "^2.0.1"
