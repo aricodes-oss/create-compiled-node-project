@@ -36,7 +36,7 @@ const PACKAGE_DATA = {
   files: ['lib/*'],
 };
 
-const COPIED_FILES = ['.editorconfig', '.gitignore', '.prettierrc', '.eslintrc.js', '.swcrc'];
+const COPIED_FILES = ['.editorconfig', '.prettierrc', '.eslintrc.js', '.swcrc'];
 const DEV_PACKAGES = [
   // Babel
   '@swc/cli',
