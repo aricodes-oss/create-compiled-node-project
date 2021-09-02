@@ -24,13 +24,13 @@ const RESOURCE_PATH = path.join(__dirname, 'resources');
 const PACKAGE_DATA = {
   scripts: {
     build:
-      'swc --copy-files --include-dotfiles --source-root ./src --source-maps both -q src -d lib/',
+      'swc --copy-files --include-dotfiles --source-root ./src --source-maps inline -q src -d lib/',
     prepublishOnly: `${PACKAGE_MANAGER} run build`,
-    dev: '${PACKAGE_MANAGER} run build; node lib/index.js',
-    watch: `nodemon --exec 'yarn dev' -e '.js'`,
+    dev: `${PACKAGE_MANAGER} run build; node lib/index.js`,
+    watch: `nodemon --exec '${PACKAGE_MANAGER} run dev' -e '.js'`,
     start: `NODE_ENV=production node lib/index.js`,
-    lint: 'eslint ./src/',
-    fix: 'eslint ./src/ --fix',
+    lint: 'eslint ./src/ --ext .js,.jsx',
+    fix: 'eslint ./src/ --ext .js,.jsx --fix',
   },
   main: 'lib/index.js',
   files: ['lib/*'],
