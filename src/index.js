@@ -43,6 +43,7 @@ const COPIED_FILES = ['.editorconfig', '.prettierrc', '.eslintrc.js', '.parcelrc
 const DEV_PACKAGES = [
   // Parcel
   'parcel',
+  'parcel-resolver-project-root',
 
   // Prettier
   'prettier',
