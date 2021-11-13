@@ -39,7 +39,7 @@ const PACKAGE_DATA = {
   files: ['dist/*'],
 };
 
-const COPIED_FILES = ['.editorconfig', '.prettierrc', '.eslintrc.js', '.gitignore', '.parcelrc'];
+const COPIED_FILES = ['.editorconfig', '.prettierrc', '.eslintrc.js', '.parcelrc'];
 const DEV_PACKAGES = [
   // Parcel
   'parcel',
