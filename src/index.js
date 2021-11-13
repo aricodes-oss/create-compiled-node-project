@@ -22,25 +22,27 @@ const INSTALL_CMD = useYarn ? 'yarn add --dev ' : 'npm install --save-dev ';
 
 const RESOURCE_PATH = path.join(__dirname, 'resources');
 const PACKAGE_DATA = {
-  scripts: {
-    build:
-      'swc --copy-files --include-dotfiles --source-root ./src --source-maps inline -q src -d lib/',
-    prepublishOnly: `${PACKAGE_MANAGER} run build`,
-    dev: `${PACKAGE_MANAGER} run build; node lib/index.js`,
-    watch: `nodemon --exec '${PACKAGE_MANAGER} run dev' -e '.js'`,
-    start: `NODE_ENV=production node lib/index.js`,
-    lint: 'eslint ./src/ --ext .js,.jsx',
-    fix: 'eslint ./src/ --ext .js,.jsx --fix',
+  source: 'src/index.js',
+  main: 'dist/index.js',
+  name: argv._[0],
+  license: 'MIT',
+  version: '0.0.1',
+  engines: {
+    node: '>=12',
   },
-  main: 'lib/index.js',
-  files: ['lib/*'],
+  scripts: {
+    build: 'parcel build',
+    prepublishOnly: `${PACKAGE_MANAGER} run build`,
+    watch: 'parcel watch',
+    lint: 'eslint --ext .js,.jsx src/**/*',
+  },
+  files: ['dist/*'],
 };
 
-const COPIED_FILES = ['.editorconfig', '.prettierrc', '.eslintrc.js', '.swcrc'];
+const COPIED_FILES = ['.editorconfig', '.prettierrc', '.eslintrc.js', '.gitignore', '.parcelrc'];
 const DEV_PACKAGES = [
-  // Babel
-  '@swc/cli',
-  '@swc/core',
+  // Parcel
+  'parcel',
 
   // Prettier
   'prettier',
@@ -52,7 +54,7 @@ const DEV_PACKAGES = [
   'eslint-plugin-prettier',
   'eslint-config-airbnb-base',
   'eslint-config-prettier',
-  'nodemon',
+  'eslint-import-resolver-parcel2',
 ];
 
 const run = async () => {
