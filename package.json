@@ -1,6 +1,6 @@
 {
   "name": "create-compiled-node-project",
-  "version": "3.0.0",
+  "version": "3.0.2",
   "main": "lib/index.js",
   "license": "MIT",
   "files": [
@@ -19,10 +19,6 @@
     "lint": "pretty-quick --check src/"
   },
   "devDependencies": {
-    "@babel/cli": "^7.10.1",
-    "@babel/core": "^7.10.1",
-    "@babel/node": "^7.10.1",
-    "@babel/preset-env": "^7.10.1",
     "@swc/cli": "^0.1.49",
     "@swc/core": "^1.2.84",
     "@vercel/ncc": "^0.30.0",
@@ -33,6 +29,7 @@
   "dependencies": {
     "await-exec": "^0.1.2",
     "chalk": "^4.0.0",
+    "chokidar": "^3.5.2",
     "regenerator-runtime": "^0.13.9",
     "yargs": "^15.3.1"
   }
