@@ -28,6 +28,7 @@ const PACKAGE_DATA = {
     prepublishOnly: `${PACKAGE_MANAGER} run build`,
     dev: `${PACKAGE_MANAGER} run build; node lib/index.js`,
     watch: `nodemon --exec '${PACKAGE_MANAGER} run dev' -e '.js'`,
+    compile: `${PACKAGE_MANAGER} run build; ncc build lib/index.js -o lib`,
     start: `NODE_ENV=production node lib/index.js`,
     lint: 'eslint ./src/ --ext .js,.jsx',
     fix: 'eslint ./src/ --ext .js,.jsx --fix',
@@ -45,6 +46,9 @@ const DEV_PACKAGES = [
   '@swc/cli',
   '@swc/core',
   'chokidar',
+
+  // NCC
+  '@vercel/ncc',
 
   // Prettier
   'prettier',
