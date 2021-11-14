@@ -32,6 +32,9 @@ const PACKAGE_DATA = {
     lint: 'eslint ./src/ --ext .js,.jsx',
     fix: 'eslint ./src/ --ext .js,.jsx --fix',
   },
+  nodemonConfig: {
+    ignore: ['lib/*'],
+  },
   main: 'lib/index.js',
   files: ['lib/*'],
 };
