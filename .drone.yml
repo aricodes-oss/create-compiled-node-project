@@ -1,0 +1,24 @@
+kind: pipeline
+type: docker
+name: Publish
+
+platform:
+  os: linux
+  arch: arm64
+
+steps:
+  - name: Install dependencies
+    image: node:latest
+    environment:
+      NPM_REGISTRY:
+        from_secret: npm_registry_cache
+    commands:
+      - npm install
+  - name: Publish
+    image: plugins/npm
+    settings:
+      username: markrawls
+      password:
+        from_secret: npm_password
+      email:
+        from_secret: npm_email
