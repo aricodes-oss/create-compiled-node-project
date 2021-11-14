@@ -22,28 +22,26 @@ const INSTALL_CMD = useYarn ? 'yarn add --dev ' : 'npm install --save-dev ';
 
 const RESOURCE_PATH = path.join(__dirname, 'resources');
 const PACKAGE_DATA = {
-  source: 'src/index.js',
-  main: 'dist/index.js',
-  name: argv._[0],
-  license: 'MIT',
-  version: '0.0.1',
-  engines: {
-    node: '>=12',
-  },
   scripts: {
-    build: 'parcel build',
+    build:
+      'swc --copy-files --include-dotfiles --source-root ./src --source-maps inline -q src -d lib/',
     prepublishOnly: `${PACKAGE_MANAGER} run build`,
-    watch: 'parcel watch',
-    lint: 'eslint --ext .js,.jsx src/**/*',
+    dev: `${PACKAGE_MANAGER} run build; node lib/index.js`,
+    watch: `nodemon --exec '${PACKAGE_MANAGER} run dev' -e '.js'`,
+    start: `NODE_ENV=production node lib/index.js`,
+    lint: 'eslint ./src/ --ext .js,.jsx',
+    fix: 'eslint ./src/ --ext .js,.jsx --fix',
   },
-  files: ['dist/*'],
+  main: 'lib/index.js',
+  files: ['lib/*'],
 };
 
-const COPIED_FILES = ['.editorconfig', '.prettierrc', '.eslintrc.js', '.parcelrc'];
+const COPIED_FILES = ['.editorconfig', '.prettierrc', '.eslintrc.js', '.swcrc'];
 const DEV_PACKAGES = [
-  // Parcel
-  'parcel',
-  'parcel-resolver-project-root',
+  // SWC
+  '@swc/cli',
+  '@swc/core',
+  'chokidar',
 
   // Prettier
   'prettier',
@@ -55,7 +53,6 @@ const DEV_PACKAGES = [
   'eslint-plugin-prettier',
   'eslint-config-airbnb-base',
   'eslint-config-prettier',
-  'eslint-import-resolver-parcel2',
 ];
 
 const run = async () => {

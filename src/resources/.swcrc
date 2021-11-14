@@ -1,6 +1,8 @@
+
 {
   "jsc": {
-    "target": "es5"
+    "target": "es5",
+    "baseUrl": "./src"
   },
   "module": {
     "type": "commonjs"
