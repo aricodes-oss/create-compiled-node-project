@@ -7,13 +7,14 @@ platform:
   arch: arm64
 
 steps:
-  - name: Install dependencies
+  - name: Build
     image: node:latest
     environment:
       NPM_REGISTRY:
         from_secret: npm_registry_cache
     commands:
       - npm install
+      - npm run compile
   - name: Publish
     image: plugins/npm
     settings:
