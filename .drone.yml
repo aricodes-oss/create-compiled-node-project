@@ -8,11 +8,10 @@ platform:
 
 steps:
   - name: Build
-    image: node:latest
+    image: node:16
     environment:
       NPM_REGISTRY:
         from_secret: npm_registry_cache
-      NODE_OPTIONS: --openssl-legacy-provider
     commands:
       - npm install
       - npm run compile
