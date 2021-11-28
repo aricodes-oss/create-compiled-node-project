@@ -1,6 +1,6 @@
 {
   "name": "create-compiled-node-project",
-  "version": "3.1.7",
+  "version": "3.1.8",
   "main": "lib/index.js",
   "license": "MIT",
   "files": [
@@ -12,7 +12,7 @@
     "create-compiled-node-project": "lib/index.js"
   },
   "scripts": {
-    "build": "swc --copy-files --include-dotfiles --source-root ./src src -d lib/",
+    "build": "swc --copy-files --include-dotfiles --source-root ./src src -d lib/ --config-file .swcrc",
     "prepublishOnly": "npm run build; npm run compile",
     "dev": "npm run build; node lib/index.js",
     "compile": "npm run build; ncc build lib/index.js -o lib",

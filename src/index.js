@@ -40,7 +40,7 @@ const PACKAGE_DATA = {
   files: ['lib/*'],
 };
 
-const COPIED_FILES = ['.editorconfig', '.prettierrc', '.eslintrc.js', '.swcrc'];
+const COPIED_FILES = ['.editorconfig', '.prettierrc', '.eslintrc.js', 'swcrc'];
 const DEV_PACKAGES = [
   // SWC
   '@swc/cli',
@@ -99,7 +99,11 @@ const run = async () => {
   for (const f of COPIED_FILES) {
     try {
       console.log(`Copying ${chalk.blue(f)}`);
-      await fs.copyFile(path.join(RESOURCE_PATH, f), path.join('./', f));
+      let outPath = path.join('./', f);
+      if (f === 'swcrc') {
+        outPath = path.join('./', '.swcrc');
+      }
+      await fs.copyFile(path.join(RESOURCE_PATH, f), outPath);
     } catch (e) {
       console.error(e);
       console.error(`Unable to copy ${chalk.red(f)}, exiting`);
