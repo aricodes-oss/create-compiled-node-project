@@ -21,7 +21,7 @@
   "devDependencies": {
     "@swc/cli": "^0.1.49",
     "@swc/core": "^1.2.84",
-    "@vercel/ncc": "^0.30.0",
+    "@vercel/ncc": "^0.32.0",
     "babel-plugin-module-resolver": "^4.0.0",
     "prettier": "^2.0.5",
     "pretty-quick": "^2.0.1"
