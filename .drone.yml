@@ -12,6 +12,7 @@ steps:
     environment:
       NPM_REGISTRY:
         from_secret: npm_registry_cache
+      NODE_OPTIONS: --openssl-legacy-provider
     commands:
       - npm install
       - npm run compile
