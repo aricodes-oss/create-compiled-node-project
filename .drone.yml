@@ -8,7 +8,7 @@ platform:
 
 steps:
   - name: Build
-    image: node:16
+    image: node:16-alpine
     environment:
       NPM_REGISTRY:
         from_secret: npm_registry_cache
