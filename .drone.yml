@@ -18,8 +18,8 @@ steps:
   - name: Publish
     image: plugins/npm
     settings:
-      username: markrawls
+      username:
+        from_secret: NPM_USERNAME
       password:
-        from_secret: npm_password
-      email:
-        from_secret: npm_email
+        from_secret: NPM_PASSWORD
+      email: ari@aricodes.net
