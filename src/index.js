@@ -26,7 +26,7 @@ const PACKAGE_DATA = {
     build:
       'swc --copy-files --include-dotfiles --source-root ./src --source-maps inline -q src -d lib/',
     prepublishOnly: `${PACKAGE_MANAGER} run build`,
-    dev: `${PACKAGE_MANAGER} run build; node lib/index.js`,
+    dev: `swc-node src/index.js`,
     watch: `nodemon --exec '${PACKAGE_MANAGER} run dev' -e '.js'`,
     compile: `${PACKAGE_MANAGER} run build; ncc build lib/index.js -o lib`,
     start: `NODE_ENV=production node lib/index.js`,
@@ -46,6 +46,7 @@ const DEV_PACKAGES = [
   '@swc/cli',
   '@swc/core',
   'chokidar',
+  'swc-node',
 
   // NCC
   '@vercel/ncc',
