@@ -6,6 +6,10 @@ platform:
   os: linux
   arch: arm64
 
+trigger:
+  branch:
+    - master
+
 steps:
   - name: Build
     image: node:16-alpine
