@@ -40,7 +40,14 @@ const PACKAGE_DATA = {
   files: ['lib/*'],
 };
 
-const COPIED_FILES = ['.editorconfig', '.prettierrc', '.eslintrc.js', 'swcrc'];
+const COPIED_FILES = [
+  '.editorconfig',
+  '.prettierrc',
+  '.eslintrc.js',
+  'swcrc',
+  'jsconfig.json',
+  'tsconfig.json',
+];
 const DEV_PACKAGES = [
   // SWC
   '@swc/cli',
