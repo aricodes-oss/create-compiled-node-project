@@ -48,7 +48,7 @@ const COPIED_FILES = [
   'swcrc',
   'jsconfig.json',
   'tsconfig.json',
-  'loader.js',
+  'loader',
 ];
 const DEV_PACKAGES = [
   // SWC
