@@ -22,11 +22,12 @@ const INSTALL_CMD = useYarn ? 'yarn add --dev ' : 'npm install --save-dev ';
 
 const RESOURCE_PATH = path.join(__dirname, 'resources');
 const PACKAGE_DATA = {
+  type: 'module',
   scripts: {
     build:
       'swc --copy-files --include-dotfiles --source-root ./src --source-maps inline -q src -d lib/',
     prepublishOnly: `${PACKAGE_MANAGER} run build`,
-    dev: `swc-node src/index.js`,
+    dev: 'node --no-warnings -r @swc-node/register --loader ./loader.js src/index.js',
     watch: `nodemon --exec '${PACKAGE_MANAGER} run dev' -e '.js'`,
     compile: `${PACKAGE_MANAGER} run build; ncc build lib/index.js -o lib`,
     start: `NODE_ENV=production node lib/index.js`,
@@ -47,13 +48,16 @@ const COPIED_FILES = [
   'swcrc',
   'jsconfig.json',
   'tsconfig.json',
+  'loader.js',
 ];
 const DEV_PACKAGES = [
   // SWC
   '@swc/cli',
   '@swc/core',
+  '@swc-node/register',
   'chokidar',
-  'swc-node',
+  'nodemon',
+  'ts-node',
 
   // NCC
   '@vercel/ncc',
