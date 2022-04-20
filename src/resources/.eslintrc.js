@@ -3,7 +3,7 @@ module.exports = {
     ecmaVersion: 'latest',
   },
   extends: ['airbnb-base', 'prettier'],
-  plugins: ['prettier'],
+  plugins: ['prettier', 'import'],
   rules: {
     // for loops should not be restricted
     'no-restricted-syntax': ['off'],
