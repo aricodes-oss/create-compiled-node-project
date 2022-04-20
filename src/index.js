@@ -115,6 +115,9 @@ const run = async () => {
       if (f === 'swcrc') {
         outPath = path.join('./', '.swcrc');
       }
+      if (f === 'loader') {
+        outPath = path.join('./', 'loader.js');
+      }
       await fs.copyFile(path.join(RESOURCE_PATH, f), outPath);
     } catch (e) {
       console.error(e);
