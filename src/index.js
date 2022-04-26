@@ -22,21 +22,15 @@ const INSTALL_CMD = useYarn ? 'yarn add --dev ' : 'npm install --save-dev ';
 
 const RESOURCE_PATH = path.join(__dirname, 'resources');
 const PACKAGE_DATA = {
-  type: 'module',
   scripts: {
-    build:
-      'swc --copy-files --include-dotfiles --source-root ./src --source-maps inline -q src -d lib/',
+    build: 'parcel build',
     prepublishOnly: `${PACKAGE_MANAGER} run build`,
-    dev: 'node --no-warnings -r @swc-node/register --loader ./loader.js src/index.js',
-    watch: `nodemon --exec '${PACKAGE_MANAGER} run dev' -e '.js'`,
-    compile: `${PACKAGE_MANAGER} run build; ncc build lib/index.js -o lib`,
+    watch: 'parcel watch',
     start: `NODE_ENV=production node lib/index.js`,
     lint: 'eslint ./src/ --ext .js,.jsx',
     fix: 'eslint ./src/ --ext .js,.jsx --fix',
   },
-  nodemonConfig: {
-    ignore: ['lib/*'],
-  },
+  source: 'src/index.js',
   main: 'lib/index.js',
   files: ['lib/*'],
 };
@@ -45,22 +39,15 @@ const COPIED_FILES = [
   '.editorconfig',
   '.prettierrc',
   '.eslintrc.js',
-  'swcrc',
+  '.parcelrc',
   'jsconfig.json',
   'tsconfig.json',
-  'loader',
 ];
 const DEV_PACKAGES = [
-  // SWC
-  '@swc/cli',
-  '@swc/core',
-  '@swc-node/register',
-  'chokidar',
-  'nodemon',
-  'ts-node',
-
-  // NCC
-  '@vercel/ncc',
+  // Parcel
+  'parcel',
+  'parcel-resolver-project-root',
+  'parcel-reporter-auto-exec',
 
   // Prettier
   'prettier',
@@ -112,12 +99,6 @@ const run = async () => {
     try {
       console.log(`Copying ${chalk.blue(f)}`);
       let outPath = path.join('./', f);
-      if (f === 'swcrc') {
-        outPath = path.join('./', '.swcrc');
-      }
-      if (f === 'loader') {
-        outPath = path.join('./', 'loader.js');
-      }
       await fs.copyFile(path.join(RESOURCE_PATH, f), outPath);
     } catch (e) {
       console.error(e);
